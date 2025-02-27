@@ -1,17 +1,17 @@
-class QuadraticEquation {
+export default class QuadraticEquation {
   private readonly a: number;
   private readonly b: number;
   private readonly c: number;
   private readonly discriminant: number;
   private readonly roots: number[];
 
-  constructor(coeffs: Coefficients) {
-    if (coeffs.a === 0) {
+  constructor(a: number, b: number, c: number) {
+    if (a === 0) {
       throw new Error('Coefficient "a" must not be 0');
     }
-    this.a = coeffs.a;
-    this.b = coeffs.b;
-    this.c = coeffs.c;
+    this.a = a;
+    this.b = b;
+    this.c = c;
     this.discriminant = this.calculateDiscriminant();
     this.roots = this.calculateRoots();
   }

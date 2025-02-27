@@ -1,4 +1,5 @@
 import readline, { Interface } from 'node:readline/promises';
+import { solveAndPrintEquation } from './solver';
 
 const rl: Interface = readline.createInterface({
   input: process.stdin,
@@ -19,22 +20,16 @@ async function askForNumber(prompt: string): Promise<number> {
 
 export async function startInteractive(): Promise<void> {
   try {
-    console.log('Welcome to non-interactive mode \nPlease enter arguments');
+    console.log('Welcome to interactive mode \nPlease enter arguments');
 
     const a: number = await askForNumber('a = ');
     const b: number = await askForNumber('b = ');
     const c: number = await askForNumber('c = ');
 
-    const coeffs: Coefficients = { a, b, c };
-
-    console.log(
-      `Equation is: (${coeffs.a}) x^2 + (${coeffs.b}) x + (${coeffs.c}) = 0`,
-    );
+    solveAndPrintEquation(a, b, c);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   } finally {
     rl.close();
   }
 }
-
-startInteractive();
