@@ -7,8 +7,4 @@ export async function startNonInteractive(filePath: string): Promise<void> {
   if (coeffs.length !== 3 || coeffs.some(isNaN)) {
     throw new Error('Invalid file format');
   }
-
-  console.log(
-    `Equation: (${coeffs[0]}) x^2 + (${coeffs[1]}) x + (${coeffs[2]}) = 0`,
-  );
 }
