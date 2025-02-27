@@ -5,13 +5,13 @@ class QuadraticEquation {
   private readonly discriminant: number;
   private readonly roots: number[];
 
-  constructor(a: number, b: number, c: number) {
-    if (a === 0) {
+  constructor(coeffs: Coefficients) {
+    if (coeffs.a === 0) {
       throw new Error('Coefficient "a" must not be 0');
     }
-    this.a = a;
-    this.b = b;
-    this.c = c;
+    this.a = coeffs.a;
+    this.b = coeffs.b;
+    this.c = coeffs.c;
     this.discriminant = this.calculateDiscriminant();
     this.roots = this.calculateRoots();
   }
