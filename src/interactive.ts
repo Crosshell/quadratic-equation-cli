@@ -25,7 +25,11 @@ export async function startInteractive(): Promise<void> {
     const b: number = await askForNumber('b = ');
     const c: number = await askForNumber('c = ');
 
-    console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
+    const coeffs: Coefficients = { a, b, c };
+
+    console.log(
+      `Equation is: (${coeffs.a}) x^2 + (${coeffs.b}) x + (${coeffs.c}) = 0`,
+    );
   } catch (err) {
     console.log(err);
   } finally {
