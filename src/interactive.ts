@@ -6,15 +6,24 @@ const rl: Interface = readline.createInterface({
   output: process.stdout,
 });
 
-async function askForNumber(prompt: string): Promise<number> {
+async function askForNumber(
+  prompt: string,
+  excludedValues: number[] = [],
+): Promise<number> {
   while (true) {
     const value: string = await rl.question(prompt);
     const num: number = parseFloat(value);
 
-    if (!isNaN(num)) {
-      return num;
+    if (isNaN(num)) {
+      console.log(`Error. Expected a valid real number, got ${value} instead`);
+      continue;
     }
-    console.log(`Error. Expected a valid real number, got ${value} instead`);
+    if (excludedValues.includes(num)) {
+      console.log(`Error. a cannot be ${num}`);
+      continue;
+    }
+
+    return num;
   }
 }
 
@@ -22,7 +31,7 @@ export async function startInteractive(): Promise<void> {
   try {
     console.log('Welcome to interactive mode \nPlease enter arguments');
 
-    const a: number = await askForNumber('a = ');
+    const a: number = await askForNumber('a = ', [0]);
     const b: number = await askForNumber('b = ');
     const c: number = await askForNumber('c = ');
 

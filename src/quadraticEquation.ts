@@ -6,9 +6,6 @@ export default class QuadraticEquation {
   private readonly roots: number[];
 
   constructor(a: number, b: number, c: number) {
-    if (a === 0) {
-      throw new Error('Coefficient "a" must not be 0');
-    }
     this.a = a;
     this.b = b;
     this.c = c;
