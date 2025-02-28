@@ -20,6 +20,10 @@ export async function startNonInteractive(filePath: string): Promise<void> {
 
     solveAndPrintEquation(a, b, c);
   } catch (err) {
-    console.error(err);
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+      console.log(`File ${filePath} does not exist`);
+    } else {
+      console.error(err);
+    }
   }
 }
