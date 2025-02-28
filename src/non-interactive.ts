@@ -16,6 +16,7 @@ export async function startNonInteractive(filePath: string): Promise<void> {
 
     if (a === 0) {
       console.log('Error. a cannot be 0');
+      return;
     }
 
     solveAndPrintEquation(a, b, c);
